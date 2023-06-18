@@ -6,6 +6,8 @@ def key_callback(window, key, scancode, action, mods):
         glfwSetWindowShouldClose(window, GLFW_TRUE)
     if key == GLFW_KEY_SPACE and action == GLFW_PRESS:
         print("Space bar pressed")
+    if key == GLFW_KEY_SPACE and action == GLFW_RELEASE:
+        print("Space bar release")
         
 def main():
     if not glfwInit():
