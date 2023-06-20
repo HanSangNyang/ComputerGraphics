@@ -4,7 +4,9 @@ import glm
 import ctypes
 import numpy as np
 
-# draw a basic 3-color triangle on window
+# draw grid
+# you can move grid by pressing '1', '3', 'Q', 'E', '2', 'W'
+# you can also toggle the view by pressing 'T'
 
 g_cam_ang_x = 0.
 g_cam_ang_y = 0.
