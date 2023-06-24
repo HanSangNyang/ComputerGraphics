@@ -54,7 +54,8 @@ def cursor_callback(window, i, j):
 
     rate = ((pos.x - (j * (w_height * .15) + (w_height * .2)))**2 + (pos.y - (i * (w_width * .15) + (w_width * .2)))**2 )**0.5 / ((w_width+w_height)/2)
 
-    # rate = (((pos.x - w_width/2)**2 + (pos.y - w_height/2)**2)**0.5) / ((w_width+w_height)/2)
+    if rate > 1.2:
+        rate = 1.2
 
     return glm.scale((1.2 - rate, 1.2 - rate, 0.0))
 
