@@ -10,6 +10,7 @@ import numpy as np
 w_width = 800
 w_height = 800
 circle_color = [1.0, 0.67, 0.725]
+rate = 0.0
 
 g_vertex_shader_src = '''
 #version 330 core
@@ -36,9 +37,11 @@ in vec4 vout_color;
 
 out vec4 FragColor;
 
+uniform float color;
+
 void main()
 {
-    FragColor = vout_color;
+    FragColor = vec4(vout_color.x - color, vout_color.yzw);
 }
 '''
 
@@ -47,7 +50,7 @@ def key_callback(window, key, scancode, action, mods):
         glfwSetWindowShouldClose(window, GLFW_TRUE)
 
 def cursor_callback(window, i, j):
-    global w_width, w_height
+    global w_width, w_height, rate
 
     pos = glm.vec2()
     pos.x, pos.y = glfw.get_cursor_pos(window)
@@ -91,9 +94,15 @@ def prepare_vao_circle():
     return VAO
 
 def draw_circle(shader_program, vao, M):
+    global rate
+
     glBindVertexArray(vao)
+
     M_loc = glGetUniformLocation(shader_program, 'M')
+    color_loc = glGetUniformLocation(shader_program, 'color')
+
     glUniformMatrix4fv(M_loc, 1, GL_FALSE, glm.value_ptr(M))
+    glUniform1f(color_loc, rate)
 
     glDrawArrays(GL_TRIANGLE_FAN, 0, 362)
 
