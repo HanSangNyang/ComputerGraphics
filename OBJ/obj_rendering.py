@@ -13,6 +13,7 @@ g_cam_ang_z = 0.
 g_toggle_ortho = 1
 g_toggle_poly = 1
 
+
 v_array = []
 vn_array = []
 fv_array = []
@@ -285,7 +286,7 @@ def draw_rendering(shader_program, vao, M, MVP):
 
     glUniformMatrix4fv(MVP_loc, 1, GL_FALSE, glm.value_ptr(MVP))
     glUniformMatrix4fv(M_loc, 1, GL_FALSE, glm.value_ptr(M))
-    glUniform3f(color_loc, 1, 1, 1)
+    glUniform3f(color_loc, 0, 1, 1)
 
     glDrawArrays(GL_TRIANGLES, 0, f_count * 3)
 
