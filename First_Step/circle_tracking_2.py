@@ -9,7 +9,7 @@ import numpy as np
 
 w_width = 800
 w_height = 800
-circle_color = [1.0, 0.67, 0.725]
+circle_color = [1.0, 0.67, 0.73]
 rate = 0.0
 
 g_vertex_shader_src = '''
